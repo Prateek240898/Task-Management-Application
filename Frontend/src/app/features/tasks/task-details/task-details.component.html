@@ -1,0 +1,224 @@
+<h2 mat-dialog-title>
+
+    <mat-icon>
+
+        visibility
+
+    </mat-icon>
+
+    Task Details
+
+</h2>
+
+<mat-dialog-content class="dialog-content">
+
+    <!-- Title -->
+
+    <div class="detail-section">
+
+        <label>
+
+            Title
+
+        </label>
+
+        <p>
+
+            {{ task.title }}
+
+        </p>
+
+    </div>
+
+    <!-- Description -->
+
+    <div class="detail-section">
+
+        <label>
+
+            Description
+
+        </label>
+
+        <p class="description">
+
+            {{ descriptionText }}
+
+        </p>
+
+        @if(shouldShowToggle){
+
+        <!-- <button mat-button color="primary" class="toggle-button" (click)="toggleDescription()">
+
+            {{
+            showFullDescription
+            ? 'Show Less'
+            : 'Show More'
+            }}
+
+        </button> -->
+
+        <p class="toggle-text" (click)="toggleDescription()">
+
+            {{
+            showFullDescription
+            ? 'Show Less'
+            : 'Show More'
+            }}
+
+        </p>
+
+        }
+
+    </div>
+
+    <!-- Status -->
+
+    <div class="detail-section">
+
+        <label>
+
+            Status
+
+        </label>
+
+        <div>
+
+            <span class="status-badge" [class.pending]="task.status === 'Pending'"
+                [class.completed]="task.status === 'Completed'">
+
+                {{ task.status }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="divider">
+
+    </div>
+
+    <!-- Information Grid -->
+
+    <div class="details-grid">
+
+        <div class="detail-item">
+
+            <label>
+
+                Assigned To
+
+            </label>
+
+            <p>
+
+                {{ task.assignedTo?.fullName }}
+
+                ({{ task.assignedTo?.username }})
+
+            </p>
+
+        </div>
+
+        <div class="detail-item">
+
+            <label>
+
+                Assignee Role
+
+            </label>
+
+            <p>
+
+                {{ task.assignedTo?.role }}
+
+            </p>
+
+        </div>
+
+        <div class="detail-item">
+
+            <label>
+
+                Created By
+
+            </label>
+
+            <p>
+
+                {{ task.createdBy?.fullName }}
+
+                ({{ task.createdBy?.username }})
+
+            </p>
+
+        </div>
+
+        <div class="detail-item">
+
+            <label>
+
+                Creator Role
+
+            </label>
+
+            <p>
+
+                {{ task.createdBy?.role }}
+
+            </p>
+
+        </div>
+
+        <div class="detail-item">
+
+            <label>
+
+                Created On
+
+            </label>
+
+            <p>
+
+                {{
+                task.createdAt
+                | date:'dd-MMM-yyyy hh:mm a'
+                }}
+
+            </p>
+
+        </div>
+
+        <div class="detail-item">
+
+            <label>
+
+                Updated On
+
+            </label>
+
+            <p>
+
+                {{
+                task.updatedAt
+                | date:'dd-MMM-yyyy hh:mm a'
+                }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button mat-raised-button color="primary" (click)="close()">
+
+        Close
+
+    </button>
+
+</mat-dialog-actions>

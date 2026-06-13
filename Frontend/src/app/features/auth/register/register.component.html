@@ -1,0 +1,387 @@
+@if(isLoading){
+
+<app-loader></app-loader>
+
+}
+
+<div class="register-container">
+
+   <mat-card class="register-card">
+
+      <div class="register-header">
+
+         <mat-icon>
+
+            person_add
+
+         </mat-icon>
+
+         <h1>
+
+            Create Account
+
+         </h1>
+
+         <p>
+
+            Register to continue
+
+         </p>
+
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+         <!-- Full Name -->
+
+         <mat-form-field appearance="outline">
+
+            <mat-label>
+
+               Full Name
+
+            </mat-label>
+
+            <mat-icon matPrefix>
+
+               badge
+
+            </mat-icon>
+
+            <input matInput maxlength="100" formControlName="fullName">
+
+            @if(
+            f.fullName.touched &&
+            f.fullName.hasError('required')
+            ){
+
+            <mat-error>
+
+               Full Name is required
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.fullName.touched &&
+            f.fullName.hasError('minlength')
+            ){
+
+            <mat-error>
+
+               Full Name must be at least 3 characters
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.fullName.touched &&
+            f.fullName.hasError('maxlength')
+            ){
+
+            <mat-error>
+
+               Full Name cannot exceed 100 characters
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.fullName.touched &&
+            f.fullName.hasError('pattern')
+            ){
+
+            <mat-error>
+
+               Only alphabets and single spaces are allowed
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.fullName.touched &&
+            f.fullName.hasError('consecutiveSpaces')
+            ){
+
+            <mat-error>
+
+               Multiple consecutive spaces
+               are not allowed
+
+            </mat-error>
+
+            }
+
+         </mat-form-field>
+
+         <!-- Username -->
+
+         <mat-form-field appearance="outline">
+
+            <mat-label>
+
+               Username
+
+            </mat-label>
+
+            <mat-icon matPrefix>
+
+               person
+
+            </mat-icon>
+
+            <input matInput maxlength="30" formControlName="username">
+
+            @if(
+            f.username.touched &&
+            f.username.hasError('required')
+            ){
+
+            <mat-error>
+
+               Username is required
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.username.touched &&
+            f.username.hasError('minlength')
+            ){
+
+            <mat-error>
+
+               Username must be at least 3 characters
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.username.touched &&
+            f.username.hasError('maxlength')
+            ){
+
+            <mat-error>
+
+               Username cannot exceed 30 characters
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.username.touched &&
+            f.username.hasError('pattern')
+            ){
+
+            <mat-error>
+
+               Only letters, numbers and underscore are allowed
+
+            </mat-error>
+
+            }
+
+         </mat-form-field>
+
+         <!-- Email -->
+
+         <mat-form-field appearance="outline">
+
+            <mat-label>
+
+               Email
+
+            </mat-label>
+
+            <mat-icon matPrefix>
+
+               email
+
+            </mat-icon>
+
+            <input matInput maxlength="255" formControlName="email">
+
+            @if(
+            f.email.touched &&
+            f.email.hasError('required')
+            ){
+
+            <mat-error>
+
+               Email is required
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.email.touched &&
+            (
+            f.email.hasError('email') ||
+            f.email.hasError('pattern')
+            )
+            ){
+
+            <mat-error>
+
+               Please enter a valid email address
+
+            </mat-error>
+
+            }
+
+         </mat-form-field>
+
+         <!-- Password -->
+
+         <mat-form-field appearance="outline">
+
+            <mat-label>
+
+               Password
+
+            </mat-label>
+
+            <mat-icon matPrefix>
+
+               lock
+
+            </mat-icon>
+
+            <input matInput [type]="hidePassword ? 'password' : 'text'" maxlength="50" formControlName="password">
+
+            <button mat-icon-button matSuffix type="button" (click)="hidePassword=!hidePassword">
+
+               <mat-icon>
+
+                  {{
+                  hidePassword
+                  ? 'visibility_off'
+                  : 'visibility'
+                  }}
+
+               </mat-icon>
+
+            </button>
+
+            @if(
+            f.password.touched &&
+            f.password.hasError('required')
+            ){
+
+            <mat-error>
+
+               Password is required
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.password.touched &&
+            f.password.hasError('minlength')
+            ){
+
+            <mat-error>
+
+               Password must be at least 6 characters
+
+            </mat-error>
+
+            }
+
+            @if(
+            f.password.touched &&
+            f.password.hasError('pattern')
+            ){
+
+            <mat-error>
+
+               Spaces are not allowed in password
+
+            </mat-error>
+
+            }
+
+         </mat-form-field>
+
+         <!-- Confirm Password -->
+
+         <mat-form-field appearance="outline">
+
+            <mat-label>
+
+               Confirm Password
+
+            </mat-label>
+
+            <mat-icon matPrefix>
+
+               lock_reset
+
+            </mat-icon>
+
+            <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" maxlength="50"
+               formControlName="confirmPassword">
+
+            <button mat-icon-button matSuffix type="button" (click)="hideConfirmPassword=!hideConfirmPassword">
+
+               <mat-icon>
+
+                  {{
+                  hideConfirmPassword
+                  ? 'visibility_off'
+                  : 'visibility'
+                  }}
+
+               </mat-icon>
+
+            </button>
+
+            @if(
+            f.confirmPassword.touched &&
+            f.confirmPassword.hasError('required')
+            ){
+
+            <mat-error>
+
+               Confirm Password is required
+
+            </mat-error>
+
+            }
+
+         </mat-form-field>
+
+         <!-- Submit -->
+
+         <button mat-raised-button class="register-btn" type="submit">
+
+            Register
+
+         </button>
+
+      </form>
+
+      <div class="login-link">
+
+         Already have an account?
+
+         <a routerLink="/login">
+
+            Login
+
+         </a>
+
+      </div>
+
+   </mat-card>
+
+</div>

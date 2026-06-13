@@ -1,0 +1,68 @@
+h2[mat-dialog-title] {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    margin-bottom: 0;
+}
+
+.dialog-content {
+
+    width: 700px;
+
+    max-width: 100%;
+
+    overflow: hidden;
+}
+
+form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding-top: 10px;
+}
+
+mat-form-field {
+
+    width: 100%;
+}
+
+textarea {
+
+    resize: vertical;
+
+    min-height: 100px;
+
+    max-height: 160px;
+}
+
+mat-dialog-actions {
+
+    padding: 16px 24px;
+
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+
+    .dialog-content {
+
+        width: 100%;
+    }
+
+    h2[mat-dialog-title] {
+
+        font-size: 22px;
+    }
+}

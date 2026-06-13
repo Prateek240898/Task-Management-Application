@@ -1,0 +1,91 @@
+@if(isLoading){
+<app-loader></app-loader>
+}
+
+<div class="login-container">
+   <mat-card class="login-card">
+      <div class="login-header">
+         <mat-icon class="header-icon">
+            task_alt
+         </mat-icon>
+         <h1>
+            Task Management
+         </h1>
+         <p>
+            Sign in to continue
+         </p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+         <mat-form-field appearance="outline">
+            <mat-label>
+               Username or Email
+            </mat-label>
+            <mat-icon matPrefix>
+               person
+            </mat-icon>
+            <input matInput maxlength="255" formControlName="loginId">
+
+            @if(loginId.touched && loginId.hasError('required')){
+            <mat-error>
+               Username or Email is required
+            </mat-error>
+            }
+
+            @if(loginId.touched && loginId.hasError('pattern')){
+            <mat-error>
+               Spaces are not allowed
+            </mat-error>
+            }
+
+         </mat-form-field>
+
+         <mat-form-field appearance="outline">
+            <mat-label>
+               Password
+            </mat-label>
+            <mat-icon matPrefix>
+               lock
+            </mat-icon>
+            <input matInput maxlength="50" [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+               <mat-icon>
+                  {{ hidePassword ? 'visibility_off' : 'visibility'}}
+               </mat-icon>
+            </button>
+
+            @if(password.touched && password.hasError('required')){
+            <mat-error>
+               Password is required
+            </mat-error>
+            }
+
+            @if(password.touched && password.hasError('minlength')){
+            <mat-error>
+               Password must be at least 6 characters
+            </mat-error>
+            }
+
+            @if(password.touched && password.hasError('pattern')){
+            <mat-error>
+               Spaces are not allowed
+            </mat-error>
+            }
+         </mat-form-field>
+
+         <button mat-raised-button class="login-btn" type="submit">
+            <mat-icon>
+               login
+            </mat-icon>
+            Login
+         </button>
+      </form>
+
+      <div class="register-link">
+         Don't have an account?
+         <a routerLink="/register">
+            Register
+         </a>
+      </div>
+   </mat-card>
+</div>

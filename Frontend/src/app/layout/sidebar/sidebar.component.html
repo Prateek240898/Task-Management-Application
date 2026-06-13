@@ -1,0 +1,58 @@
+<div class="sidebar" [class.collapsed]="isCollapsed" [class.mobile-open]="isMobileOpen">
+
+    <div class="logo">
+
+        <mat-icon>
+
+            task_alt
+
+        </mat-icon>
+
+        @if(!isCollapsed){
+
+        <span>
+
+            Task Manager
+
+        </span>
+
+        }
+
+    </div>
+
+    @for(
+    item of menuItems();
+    track item.route
+    ){
+
+    <a [routerLink]="item.route" routerLinkActive="active-link" (click)="closeSidebar()">
+
+        <mat-icon>
+
+            {{ item.icon }}
+
+        </mat-icon>
+
+        @if(!isCollapsed){
+
+        <span>
+
+            {{ item.label }}
+
+        </span>
+
+        }
+
+    </a>
+
+    }
+
+</div>
+
+@if(isMobileOpen){
+
+<div class="sidebar-overlay" (click)="closeSidebar()">
+
+</div>
+
+}

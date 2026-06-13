@@ -1,0 +1,99 @@
+.manager-list-container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.filters-section {
+
+    display: flex;
+
+    justify-content: flex-end;
+}
+
+.filters-section mat-form-field {
+
+    width: 400px;
+
+    max-width: 100%;
+}
+
+.table-container {
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 2px 12px rgba(0,
+            0,
+            0,
+            0.08);
+}
+
+table {
+
+    width: 100%;
+}
+
+th {
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+td {
+
+    vertical-align: middle;
+}
+
+.action-buttons {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+mat-paginator {
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 2px 12px rgba(0,
+            0,
+            0,
+            0.08);
+}
+
+@media (max-width: 768px) {
+
+    .filters-section {
+
+        justify-content: stretch;
+    }
+
+    .filters-section mat-form-field {
+
+        width: 100%;
+    }
+
+    .table-container {
+
+        overflow-x: auto;
+    }
+
+    table {
+
+        min-width: 800px;
+    }
+}

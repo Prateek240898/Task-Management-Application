@@ -1,0 +1,119 @@
+@if(isLoading){
+
+<app-loader></app-loader>
+
+}
+
+<div class="dashboard-container">
+
+    <div class="dashboard-header">
+
+        <h1>
+
+            Dashboard
+
+        </h1>
+
+        <p>
+
+            Welcome to Task Manager
+
+        </p>
+
+    </div>
+
+    <div class="cards-grid">
+
+        @if(role === 'Admin'){
+
+        <div class="card blue">
+
+            <span>Managers</span>
+
+            <h2>
+                {{
+                dashboardData.totalManagers
+                || 0
+                }}
+            </h2>
+
+        </div>
+
+        <div class="card indigo">
+
+            <span>Team Leads</span>
+
+            <h2>
+                {{
+                dashboardData.totalTeamLeads
+                || 0
+                }}
+            </h2>
+
+        </div>
+
+        }
+
+        @if(
+        role === 'Admin' ||
+        role === 'Manager' ||
+        role === 'Team Lead'
+        ){
+
+        <div class="card purple">
+
+            <span>Employees</span>
+
+            <h2>
+                {{
+                dashboardData.totalEmployees
+                || 0
+                }}
+            </h2>
+
+        </div>
+
+        }
+
+        <div class="card teal">
+
+            <span>Total Tasks</span>
+
+            <h2>
+                {{
+                dashboardData.totalTasks
+                || 0
+                }}
+            </h2>
+
+        </div>
+
+        <div class="card orange">
+
+            <span>Pending Tasks</span>
+
+            <h2>
+                {{
+                dashboardData.pendingTasks
+                || 0
+                }}
+            </h2>
+
+        </div>
+
+        <div class="card green">
+
+            <span>Completed Tasks</span>
+
+            <h2>
+                {{
+                dashboardData.completedTasks
+                || 0
+                }}
+            </h2>
+
+        </div>
+
+    </div>
+
+</div>

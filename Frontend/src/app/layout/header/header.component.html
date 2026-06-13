@@ -1,0 +1,54 @@
+<div class="header">
+
+    <div class="header-left">
+
+        <button mat-icon-button (click)="toggleSidebar()">
+
+            <mat-icon>
+
+                menu
+
+            </mat-icon>
+
+        </button>
+
+        <div>
+
+            <div class="welcome-text">
+
+                Welcome,
+                <strong>
+
+                    {{ fullName }}
+
+                </strong>
+
+            </div>
+
+            <div class="role-text">
+
+                {{ roleLabel }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <button mat-stroked-button color="primary" class="logout-btn" (click)="logout()">
+
+            <mat-icon>
+
+                logout
+
+            </mat-icon>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>

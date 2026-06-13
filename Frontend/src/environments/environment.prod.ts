@@ -1,4 +1,4 @@
-const BASE_URL = 'https://your-api-url.com';
+const BASE_URL = 'https://task-management-application-backend-q17s.onrender.com';
 
 export const environment = {
     production: true,
